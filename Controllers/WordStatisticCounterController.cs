@@ -32,7 +32,8 @@ namespace BusinessLayer.Controllers
             if (Request != null)
             {
                 var response = await _wordCounterBO.SaveWordCounter(buffer.Buffer);
-                return Ok(response);
+                if(response!= null )
+                return Ok(response.Response);
 
             }
             return NotFound();
