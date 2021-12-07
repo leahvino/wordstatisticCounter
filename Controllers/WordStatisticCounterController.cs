@@ -1,5 +1,4 @@
-﻿using BL.InputData;
-using BL.Interfaces;
+﻿using Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Model.Dto;
@@ -28,29 +27,30 @@ namespace BusinessLayer.Controllers
 
         [HttpPost]
         public async Task<IActionResult> SaveWordCounter([FromBody] WordcounterRequest buffer)
-        {
-            //_wordCounter.SetDataType(new StringInputData());
-            var response = await _wordCounterBO.SaveWordCounter(buffer.Buffer);
+        {         
 
-            if (response != null)
+            if (Request != null)
             {
-                return Ok(response);                
+                var response = await _wordCounterBO.SaveWordCounter(buffer.Buffer);
+                return Ok(response);
+
             }
             return NotFound();
 
+
+
         }
 
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> GetWordStatistic(string wordName )
         {
-            var response = await _wordCounterBO.SaveWordCounter();
+            var response = await _wordCounterBO.GetWordStatistic(wordName);
 
-            if (response is null)
+            if (response != null)
             {
-                return NotFound();
+                return Ok(response);
             }
-
-            return Ok(response);
+            return NotFound();
         }
     }
 }
