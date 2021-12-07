@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31911.196
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer", "BusinessLayer.csproj", "{E2A7405C-1687-453B-962B-CD8A36C91B7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLayer", "BusinessLayer.csproj", "{E2A7405C-1687-453B-962B-CD8A36C91B7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "..\BL\BL.csproj", "{19B5DCF3-0833-4435-BC23-4A625653C312}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BL", "..\BL\BL.csproj", "{19B5DCF3-0833-4435-BC23-4A625653C312}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL.Interfaces", "..\BL.interface\BL.Interfaces.csproj", "{EE6BC91B-B770-4496-9898-997590D78866}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Interfaces", "..\BL.interface\Interfaces.csproj", "{EE6BC91B-B770-4496-9898-997590D78866}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "..\DAL\DAL.csproj", "{1FFC15D6-4237-4688-A7CE-1DCF268FA18D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "..\DAL\DAL.csproj", "{1FFC15D6-4237-4688-A7CE-1DCF268FA18D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "..\Model\Model.csproj", "{16B81015-8BA0-44E1-8D6C-2C1B7D00B778}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "..\Model\Model.csproj", "{16B81015-8BA0-44E1-8D6C-2C1B7D00B778}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

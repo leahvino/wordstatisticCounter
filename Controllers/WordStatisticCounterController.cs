@@ -2,6 +2,7 @@
 using BL.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Model.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,34 +10,40 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
+    //[Route("api/[controller]/[action]/{?id}")]
+    ////[ApiController]
     public class WordStatisticCounterController : ControllerBase
     {
-        private readonly IWordStatisticCounter _wordStatisticCounter;
-        public WordStatisticCounterController(IWordStatisticCounter wordStatisticCounter)
+        private readonly IWordCounterBO _wordCounterBO;
+        public WordStatisticCounterController(IWordCounterBO wordCounterBO)
         {
-            _wordStatisticCounter = wordStatisticCounter;
+            _wordCounterBO = wordCounterBO;
         }
-      
-        [HttpPost]
-        public async Task<IActionResult> SaveWordCounter([FromBody] string buffer)
-        {
-            _wordStatisticCounter.SetDataType(new StringInputData());
-            var response = _wordStatisticCounter.SaveWordCounter();
 
-            if (response is null)
+        [HttpGet]
+        public async Task<string> HealthCheck()
+        {
+            return  "Success";
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SaveWordCounter([FromBody] WordcounterRequest buffer)
+        {
+            //_wordCounter.SetDataType(new StringInputData());
+            var response = await _wordCounterBO.SaveWordCounter(buffer.Buffer);
+
+            if (response != null)
             {
-                return NotFound();
+                return Ok(response);                
             }
-            return Ok(response);
+            return NotFound();
+
         }
 
         [HttpPost]
-        public async Task<IActionResult> SaveWordCounter([FromBody]  Uri buffer)
+        public async Task<IActionResult> GetWordStatistic(string wordName )
         {
-            _wordStatisticCounter.SetDataType(new UrlInputData());
-            var response = _wordStatisticCounter.SaveWordCounter();
+            var response = await _wordCounterBO.SaveWordCounter();
 
             if (response is null)
             {
