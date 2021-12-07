@@ -55,45 +55,9 @@ namespace WordStatisticCounter
             }
 
 
-            //app.Use(async (context, next) =>
-            //{
-            //    var contentType = context.Request.ContentType;
-                               
-            //    if (contentType != null && contentType.Contains("x-www-form-urlencoded"))
-                
-            //    {
-            //        //var formData = await context.Request.Form
-            //        //context.Request.Body = new FormUrlEncodedContent(Correct(formData));
-            //        Dictionary<string, StringValues> formparameters = new Dictionary<string, StringValues>();
-
-            //        string s = String.Empty;
-            //        using (WebClient client = new WebClient())
-            //        {
-            //            s = client.DownloadString(context.Request.Form["Buffer"]);
-            //        }
-
-            //        formparameters.Add("Buffer", s?.ToString());// change to generic
-
-            //        context.Request.ContentType = "application/json";
-            //        var json = JsonConvert.SerializeObject(formparameters);
-            //        //modified stream
-            //        context.Request.Form = new FormCollection(formparameters);
-            //        var requestData = Encoding.UTF8.GetBytes(json);
-            //        var stream = new MemoryStream(requestData);
-            //        context.Request.Body = stream;
-            //        await next.Invoke();
-
-
-            //    }
-            //    await next();
-
-
-
-            //});
-
             app.UseHttpsRedirection();
 
-            app.UseMiddleware<CreateSession>();
+            app.UseMiddleware<MiddleWareHandler>();
 
             app.UseRouting();
 
@@ -116,11 +80,11 @@ namespace WordStatisticCounter
     }
 
 
-    public class CreateSession
+    public class MiddleWareHandler
     {
         private readonly RequestDelegate _next;
 
-        public CreateSession(RequestDelegate next)
+        public MiddleWareHandler(RequestDelegate next)
         {
             this._next = next;
         }
